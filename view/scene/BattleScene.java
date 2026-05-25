@@ -28,6 +28,8 @@ public class BattleScene extends JPanel {
     private JButton endTurnBtn;
     private JPanel centerArena;
 
+    //SpireGameApp의 showBattle 메서드에서 만들어짐
+    //showBattle은 gameController가 SpireGameApp에게 받은 콜백 함수로 실행이 된다
     public BattleScene(GameController game) {
         this.game = game;
         setBackground(new Color(10, 10, 24));
@@ -167,6 +169,7 @@ public class BattleScene extends JPanel {
             @Override public void mouseEntered(MouseEvent e) { endTurnBtn.setBackground(new Color(231, 76, 60)); }
             @Override public void mouseExited(MouseEvent e)  { endTurnBtn.setBackground(new Color(192, 57, 43)); }
         });
+        //배틀이 널이 아니고 state가 player_turn이면 endPlayerTurn 메서드 실행
         endTurnBtn.addActionListener(e -> {
             if (battle != null && battle.getState() == BattleController.BattleState.PLAYER_TURN) {
                 battle.endPlayerTurn();
