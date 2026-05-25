@@ -1,6 +1,9 @@
 package com.spiregame.model.effect;
 
 public enum StatusEffect {
+    // 상태 효과의 "종류"만 enum으로 정의한다.
+    // 실제 수치는 Player/Enemy의 Map<StatusEffect, Integer>에 저장된다.
+    // isBuff가 false인 효과는 Player.tickStatusEffects()에서 턴마다 감소한다.
     STRENGTH("근력", "공격력 증가", true),
     DEXTERITY("민첩", "방어력 증가", true),
     BLOCK("방어", "피해 감소", true),

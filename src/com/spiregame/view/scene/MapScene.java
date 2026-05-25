@@ -23,7 +23,6 @@ public class MapScene extends JPanel {
     }
 
     private void buildLayout() {
-        setLeft(buildLeftPanel());
         JScrollPane scroll = new JScrollPane(buildMapCanvas());
         scroll.setBackground(new Color(7, 7, 18));
         scroll.getViewport().setBackground(new Color(7, 7, 18));
@@ -37,10 +36,6 @@ public class MapScene extends JPanel {
             JScrollBar vBar = scroll.getVerticalScrollBar();
             vBar.setValue(vBar.getMaximum());
         });
-    }
-
-    private void setLeft(JPanel panel) {
-        // handled in buildLayout
     }
 
     private JPanel buildLeftPanel() {
@@ -138,10 +133,9 @@ public class MapScene extends JPanel {
         goldLabel.setText("💰 골드: " + game.getPlayer().getGold());
         floorLabel.setText("🗺 층: " + game.getCurrentFloor() + "/" + game.getTotalFloors());
 
-        // Rebuild map canvas
-        removeAll();
-        buildLayout();
-        revalidate();
+        if (mapCanvas != null) {
+            mapCanvas.repaint();
+        }
         repaint();
     }
 
