@@ -8,7 +8,9 @@ import java.awt.event.*;
 
 public class MainMenuScene extends JPanel {
 
+    // 게임 시작버튼 누르면 startNewGame 메서드 실행하기 위해 의존성 직접 주입
     private final GameController game;
+
 
     public MainMenuScene(GameController game) {
         this.game = game;
@@ -17,6 +19,7 @@ public class MainMenuScene extends JPanel {
         buildLayout();
     }
 
+    //패널의 컴포넌트들을 그려내는 메서드
     private void buildLayout() {
         JPanel center = new JPanel();
         center.setOpaque(false);
