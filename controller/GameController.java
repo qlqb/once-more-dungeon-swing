@@ -205,6 +205,7 @@ public class GameController {
     // ══════════════════════════════════════════════════════════════
 
     /**
+     * enterNode에서 타고 들어와서 현재 배틀 객체 생성하고 저장
      * 노드 타입(일반/엘리트/보스)에 맞는 적을 생성하고 전투를 시작합니다.
      */
     private void startBattle(MapNode node) {
