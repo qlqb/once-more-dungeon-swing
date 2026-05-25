@@ -56,6 +56,10 @@ public class BattleController {
         turnNumber++;
         state = BattleState.PLAYER_TURN;
 
+        if (!barricade) {
+            player.clearBlock();
+        }
+
         if (brutality) {
             player.takeDamage(1);
             player.drawCard();

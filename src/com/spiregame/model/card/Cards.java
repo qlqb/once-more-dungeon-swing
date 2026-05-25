@@ -18,8 +18,7 @@ public class Cards {
         @Override public void play(EffectContext ctx) {
             int str = ctx.getPlayer().getStatus(StatusEffect.STRENGTH);
             boolean weak = ctx.getPlayer().getStatus(StatusEffect.WEAK) > 0;
-            int dmg = (int)((damage + str) * (weak ? 0.75 : 1.0));
-            ctx.getTarget().takeDamage(dmg, false);
+            ctx.getTarget().takeDamage(damage+str, weak);
         }
         @Override protected void onUpgrade() { damage = 9; }
         @Override public String getDescription() { return "적에게 " + damage + " 피해를 줍니다."; }
@@ -82,7 +81,7 @@ public class Cards {
         @Override public void play(EffectContext ctx) {
             int str = ctx.getPlayer().getStatus(StatusEffect.STRENGTH);
             boolean weak = ctx.getPlayer().getStatus(StatusEffect.WEAK) > 0;
-            for (int i = 0; i < 2; i++) ctx.getTarget().takeDamage((int)((damage + str) * (weak ? 0.75 : 1.0)), false);
+            for (int i = 0; i < 2; i++) ctx.getTarget().takeDamage((damage + str), weak);
         }
         @Override protected void onUpgrade() { damage = 7; }
         @Override public String getDescription() { return "적에게 " + damage + " 피해를 2회 줍니다."; }
@@ -130,7 +129,7 @@ public class Cards {
             int str = ctx.getPlayer().getStatus(StatusEffect.STRENGTH);
             boolean weak = ctx.getPlayer().getStatus(StatusEffect.WEAK) > 0;
             for (int i = 0; i < energy; i++) {
-                ctx.getTarget().takeDamage((int)((5 + str) * (weak ? 0.75 : 1.0)), false);
+                ctx.getTarget().takeDamage((5 + str), weak);
             }
         }
         @Override public String getDescription() { return "에너지 소비당 적에게 5 피해."; }

@@ -32,6 +32,7 @@ public class SpireGameApp {
         UIManager.put("ScrollBar.track", new Color(13, 13, 34));
         UIManager.put("ScrollBar.thumb", new Color(44, 62, 80));
 
+        //이 객체는 게임동안 한번만 생성되고 관리됨
         gameController = new GameController();
 
         frame = new JFrame("Spire Quest — 분기 맵 로그라이크 카드 게임");

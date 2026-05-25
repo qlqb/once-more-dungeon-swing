@@ -363,27 +363,28 @@ public class GameController {
      */
     private Enemy generateEnemy(MapNode node) {
         int floor = node.getFloor();
+        Random random = new Random();
 
         if (node.getType() == NodeType.BOSS) {
-            return new Random().nextBoolean() ? new Enemies.Dragon() : new Enemies.Demon();
+            return random.nextBoolean() ? new Enemies.Dragon() : new Enemies.Demon();
         }
 
         if (node.getType() == NodeType.ELITE) {
-            return new Random().nextBoolean() ? new Enemies.Mage() : new Enemies.StoneWarrior();
+            return random.nextBoolean() ? new Enemies.Mage() : new Enemies.StoneWarrior();
         }
 
         // 일반 전투: 층 구간별
         if (floor >= 10) {
-            return switch (new Random().nextInt(3)) {
+            return switch (random.nextInt(3)) {
                 case 0  -> new Enemies.Mage();
                 case 1  -> new Enemies.StoneWarrior();
                 default -> new Enemies.SkeletonArcher();
             };
         }
         if (floor >= 5) {
-            return new Random().nextBoolean() ? new Enemies.SkeletonArcher() : new Enemies.Mage();
+            return random.nextBoolean() ? new Enemies.SkeletonArcher() : new Enemies.Mage();
         }
-        return new Random().nextBoolean() ? new Enemies.Goblin() : new Enemies.SkeletonArcher();
+        return random.nextBoolean() ? new Enemies.Goblin() : new Enemies.SkeletonArcher();
     }
 
     // ══════════════════════════════════════════════════════════════

@@ -18,6 +18,7 @@ public class BattleScene extends JPanel {
 
     private final GameController game;
     private BattleController battle;
+    private boolean battleEnded;
 
     private StatusBar playerStatus, enemyStatus;
     private JLabel enemyEmoji, enemyIntentLabel, turnLabel;
@@ -39,6 +40,7 @@ public class BattleScene extends JPanel {
 
     public void startBattle() {
         this.battle = game.getCurrentBattle();
+        this.battleEnded = false;
         battle.setLogCallback(this::addLog);
         battle.setUiRefreshCallback(this::refreshUI);
         refreshUI();
@@ -260,8 +262,13 @@ public class BattleScene extends JPanel {
             rebuildHand(p, state);
             endTurnBtn.setEnabled(state == BattleController.BattleState.PLAYER_TURN);
 
-            if (state == BattleController.BattleState.VICTORY)       showEndDialog(true);
-            else if (state == BattleController.BattleState.DEFEAT)   showEndDialog(false);
+            if (!battleEnded && state == BattleController.BattleState.VICTORY) {
+                battleEnded = true;
+                showEndDialog(true);
+            } else if (!battleEnded && state == BattleController.BattleState.DEFEAT) {
+                battleEnded = true;
+                showEndDialog(false);
+            }
         });
     }
 
