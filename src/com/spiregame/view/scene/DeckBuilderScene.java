@@ -28,7 +28,7 @@ public class DeckBuilderScene extends JPanel {
     private void buildLayout() {
         add(buildTopBar(), BorderLayout.NORTH);
 
-        cardGrid = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 12));
+        cardGrid = new JPanel(new GridLayout(0, 3, 12, 12));//요부분 수정했습니다.
         cardGrid.setBackground(new Color(7, 7, 18));
 
         JScrollPane scroll = new JScrollPane(cardGrid);

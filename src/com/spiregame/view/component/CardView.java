@@ -10,9 +10,9 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 
 public class CardView extends JPanel {
-
-    private static final int CARD_W = 120;
-    private static final int CARD_H = 170;
+//카드 크기 부분도 수정했습니다.
+    private static final int CARD_W = 100;
+    private static final int CARD_H = 145;
 
     private final Card card;
     private boolean playable = true;
