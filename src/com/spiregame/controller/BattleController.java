@@ -25,7 +25,6 @@ public class BattleController {
     // BattleController는 전투마다 새로 생성되므로 다음 전투까지 유지되지 않는다.
     private boolean barricade;
     private boolean brutality;
-    private int bonusEnergy;
 
     // 전투 로직은 Swing UI를 직접 몰라야 한다.
     // 대신 콜백으로 "로그를 남겨라", "화면을 갱신해라"만 요청한다.
@@ -39,7 +38,6 @@ public class BattleController {
         this.turnNumber = 0;
         this.barricade = false;
         this.brutality = false;
-        this.bonusEnergy = 0;
     }
 
     public void startBattle() {
@@ -66,10 +64,6 @@ public class BattleController {
         }
 
         player.startTurn();
-        if (bonusEnergy > 0) {
-            // Bonus energy is applied after startTurn which already set energy
-            bonusEnergy = 0;
-        }
 
         log("═══ 턴 " + turnNumber + " 시작 ═══");
 
@@ -164,7 +158,7 @@ public class BattleController {
 
     public void setBarricade(boolean b) { this.barricade = b; }
     public void setBrutality(boolean b) { this.brutality = b; }
-    public void gainBonusEnergy(int amount) { this.bonusEnergy += amount; }
+    public void gainBonusEnergy(int amount) { player.gainEnergy(amount); }
 
     // ─── Callbacks ────────────────────────────────────────────────
     // 콜백이 없으면 아무 것도 하지 않는다. 그래서 테스트나 초기화 중에도 안전하다.
