@@ -207,5 +207,6 @@ public class Player {
     public boolean spendGold(int amount) { if (gold < amount) return false; gold -= amount; return true; }
     public void incrementFloor() { floor++; }
     public void setMaxEnergy(int e) { this.maxEnergy = e; }
+    public void gainEnergy(int amount) { this.energy += amount; }
     public void increaseMaxHp(int amount) { maxHp += amount; currentHp += amount; }
 }
