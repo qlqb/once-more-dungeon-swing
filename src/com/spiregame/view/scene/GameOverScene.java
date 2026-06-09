@@ -58,7 +58,7 @@ public class GameOverScene extends JPanel {
             stats.setBorder(BorderFactory.createEmptyBorder(12, 20, 12, 20));
 
             for (String line : new String[]{
-                "🗺 도달 층: " + game.getPlayer().getFloor() + "/" + game.getTotalFloors(),
+                "🗺 도달 층: " + game.getCurrentFloor() + "/" + game.getTotalFloors(),
                 "🃏 최종 덱: " + game.getPlayer().getDeck().size() + "장",
                 "💰 남은 골드: " + game.getPlayer().getGold(),
                 "❤ 최종 HP: " + game.getPlayer().getCurrentHp() + "/" + game.getPlayer().getMaxHp()
